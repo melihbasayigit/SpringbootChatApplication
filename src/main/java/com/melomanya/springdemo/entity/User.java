@@ -1,4 +1,4 @@
-package com.melomanya.springdemo.model.entity;
+package com.melomanya.springdemo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Deprecated
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,6 +15,7 @@ public class User {
     private String name;
 
     private String email;
+
 
     public Integer getId() {
         return id;
@@ -37,5 +39,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
