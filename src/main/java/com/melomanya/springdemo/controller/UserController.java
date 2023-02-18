@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/demo")
+@RequestMapping(path = "/api")
 @Deprecated
 public class UserController {
     @Autowired

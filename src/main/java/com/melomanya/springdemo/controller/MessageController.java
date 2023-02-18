@@ -15,8 +15,11 @@ import java.util.List;
 @Controller
 public class MessageController {
 
-    @Autowired
-    MessageService service;
+    private final MessageService service;
+
+    public MessageController(MessageService service) {
+        this.service = service;
+    }
 
     @MessageMapping("/chat/send-message")
     @SendTo("/topic/public")

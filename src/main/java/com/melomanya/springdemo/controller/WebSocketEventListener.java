@@ -1,7 +1,6 @@
 package com.melomanya.springdemo.controller;
 
 import com.melomanya.springdemo.entity.Message;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
@@ -9,14 +8,18 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+import org.springframework.web.socket.messaging.SessionSubscribeEvent;
+import org.springframework.web.socket.messaging.SessionUnsubscribeEvent;
 
-import java.sql.SQLOutput;
 
-//@Component
+@Component
 public class WebSocketEventListener {
 
-    /*@Autowired
-    private SimpMessageSendingOperations messageSendingOperations;
+    private final SimpMessageSendingOperations messageSendingOperations;
+
+    public WebSocketEventListener(SimpMessageSendingOperations messageSendingOperations) {
+        this.messageSendingOperations = messageSendingOperations;
+    }
 
     @EventListener
     public void handleWebSocketConnectionListener(SessionConnectedEvent event) {
@@ -24,6 +27,11 @@ public class WebSocketEventListener {
     }
 
     @EventListener
+    public void handleWebSocketSubscribeListener(SessionSubscribeEvent event) {
+        System.out.println("New player joined the room" + event.getMessage());
+    }
+
+    /*@EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
@@ -40,8 +48,7 @@ public class WebSocketEventListener {
         }
 
 
-    }
-*/
+    }*/
 
 
 }
